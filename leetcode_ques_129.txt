@@ -1,0 +1,20 @@
+
+#Leetcode Ques 29(SUM ROOT TO LEAF NUMBERS)
+
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        stack=[]
+        sum=0
+        stack.append([root,0])
+        while(stack):
+            root,curr_num=stack.pop()
+            curr_num=curr_num*10+root.val;
+            if root.left==None and root.right==None:
+                sum+=curr_num;
+            else:
+                if root.left!=None:
+                    stack.append([root.left,curr_num])
+                if root.right!=None:
+                    stack.append([root.right,curr_num])
+        return sum
+        
